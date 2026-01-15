@@ -1,0 +1,141 @@
+╔═══════════════════════════════════════════════════════════════════════╗
+║                   DRONE TECH AI PORTAL - QUICK START                  ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+📋 SETUP (First Time Only)
+─────────────────────────────────────────────────────────────────────
+1. Open terminal in project folder
+2. Create virtual environment:
+   
+   python -m venv venv
+
+3. Activate environment:
+   
+   venv\Scripts\activate
+
+4. Install all dependencies:
+   
+   pip install -r requirements.txt
+   pip install -r CDAC-INTERNSHIP/requirements.txt
+
+
+🚀 RUN APPLICATION
+─────────────────────────────────────────────────────────────────────
+Choose ONE method:
+
+┌─ METHOD 1: Windows Batch (Easiest) ─────────────────────┐
+│ Double-click: start_servers.bat                         │
+│ → Opens 2 console windows (Flask + FastAPI)            │
+└─────────────────────────────────────────────────────────┘
+
+┌─ METHOD 2: PowerShell ──────────────────────────────────┐
+│ Run: .\start_servers.ps1                               │
+│ → Opens 2 PowerShell windows                           │
+└─────────────────────────────────────────────────────────┘
+
+┌─ METHOD 3: Single Command Line ────────────────────────┐
+│ Run: python start_all.py                               │
+│ → Both servers run in same terminal (Ctrl+C stops all) │
+└─────────────────────────────────────────────────────────┘
+
+
+🌐 ACCESS APPLICATION
+─────────────────────────────────────────────────────────────────────
+Main App:          http://localhost:5000
+Body Tracking:     http://localhost:8000 (standalone)
+
+Login with ANY credentials:
+  Username: anything
+  Password: anything
+  Email: anything@example.com
+
+
+🎯 USAGE FLOW
+─────────────────────────────────────────────────────────────────────
+1. Login page appears
+2. Enter any name and password
+3. Click "Log In"
+4. Dashboard shows 3 modules
+5. Click "Body Tracking" (subscribe first if disabled)
+6. Allow camera access
+7. Start tracking button starts pose estimation
+8. Click "Generate Graphs" for analysis
+9. Back button returns to dashboard
+
+
+⚠️ TROUBLESHOOTING
+─────────────────────────────────────────────────────────────────────
+
+❌ Port 5000 already in use?
+   → Kill process: netstat -ano | findstr :5000
+   → Or close other applications using port 5000
+
+❌ Body Tracking not loading?
+   → Check if FastAPI server running on port 8000
+   → Restart both servers using start_servers.bat
+
+❌ Camera not working?
+   → Allow camera access in browser settings
+   → Check Windows privacy settings (Settings → Privacy)
+   → Try port 0 or 1 in CDAC-INTERNSHIP/fixed_colab.py
+
+❌ ModuleNotFoundError?
+   → Activate venv first: venv\Scripts\activate
+   → Install dependencies: pip install -r requirements.txt
+
+
+📁 FILES MODIFIED
+─────────────────────────────────────────────────────────────────────
+✓ server.py           - Added FastAPI integration
+✓ body.html           - Now loads body tracking UI
+✓ start_servers.bat   - NEW: Batch startup script
+✓ start_servers.ps1   - NEW: PowerShell startup script
+✓ start_all.py        - NEW: Python startup script
+
+
+📚 DOCUMENTATION
+─────────────────────────────────────────────────────────────────────
+INTEGRATION_GUIDE.md     - Detailed setup & architecture
+INTEGRATION_SUMMARY.md   - What was changed & why
+This file               - Quick reference card
+
+
+🔧 ADVANCED
+─────────────────────────────────────────────────────────────────────
+Run Flask only:
+  python server.py
+
+Run FastAPI only:
+  cd CDAC-INTERNSHIP
+  python -m uvicorn fixed_colab:app --host 0.0.0.0 --port 8000
+
+Change port:
+  Edit start_servers.bat or use env variable:
+  set PORT=8080
+
+
+✅ VERIFICATION
+─────────────────────────────────────────────────────────────────────
+Run these in terminal to verify:
+
+1. Check Flask running:
+   curl http://localhost:5000
+
+2. Check FastAPI running:
+   curl http://localhost:8000
+
+3. Both should return HTML (body tracking UI)
+
+
+💡 TIPS
+─────────────────────────────────────────────────────────────────────
+• Keep both console windows open while using the app
+• Camera needs permission - check browser settings
+• Close both windows to stop servers
+• MediaPipe may take 30 seconds to initialize first time
+• WebSocket works best on Chrome/Edge browsers
+
+
+═══════════════════════════════════════════════════════════════════════
+Last Updated: January 2026 | Version: 2.0
+═══════════════════════════════════════════════════════════════════════
