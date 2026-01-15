@@ -91,7 +91,7 @@ A comprehensive AI-powered web application that integrates multiple computer vis
 
 ```bash
 git clone <repository-url>
-cd frontend_proto
+cd cdac_final
 ```
 
 ### Step 2: Create Virtual Environment
